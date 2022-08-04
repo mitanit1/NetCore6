@@ -1,0 +1,16 @@
+@page "/index1.html/{*name}"
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelper
+<p>Day la trang Razor Page dau tien</p>
+<p>Hoc lap trinh asp.net core <strong>@System.DateTime.Now</strong></p>
+
+@{
+    var a = 2;
+    var b = 3;
+    <p>a = @a, b = @b</p>
+}
+
+<p>Tong cua a va b la @(a + b)</p>
+
+<p>Name: @this.Request.RouteValues["name"]</p>
+
+<a asp-page="SecondPage">Index 2</a>
