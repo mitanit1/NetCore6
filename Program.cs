@@ -1,14 +1,21 @@
 ﻿using NetCore6;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+
 builder.Services.AddAuthentication();
 builder.Services.AddSession();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //builder.Services.AddRazorPages();
-builder.Services.AddRazorPages().AddRazorPagesOptions(options => {
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation().AddRazorPagesOptions(options => {
     options.RootDirectory = "/Pages";
+});
+
+builder.Services.Configure<RouteOptions>(routeOptions => {
+    routeOptions.LowercaseUrls = true;
 });
 
 var app = builder.Build();

@@ -1,0 +1,14 @@
+@using NetCore6.Models;
+@model Product;
+<div class="alert alert-danger">
+    Trang noi dung partial Product Item
+</div>
+
+<div class="card my-4" style="width: 20rem;">
+    <h2 class="card-header text-info">@Model.Name</h2>
+    <div class="card-body">
+        <p class="text">@Model.Description</p>
+        <a href="#" class="btn btn-secondary btn-sm">Dat hang</a>
+    </div>
+    @Model.Price
+</div>

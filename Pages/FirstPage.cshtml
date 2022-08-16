@@ -1,16 +1,99 @@
-@page "/index1.html/{*name}"
+@page "/index/{*name}"
 @addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelper
+@using NetCore6.Models;
+
+<h1>@this.title</h1>
+<h2>@this.Wellcome("Tian")</h2>
+
 <p>Day la trang Razor Page dau tien</p>
 <p>Hoc lap trinh asp.net core <strong>@System.DateTime.Now</strong></p>
 
+@{
+    var product1 = new Product() {
+        Name = "Iphone X",
+        Description = "Dien thoai Iphone X",
+        Price = 123.456M
+    };
+    var product2 = new Product() {
+        Name = "Iphone 11",
+        Description = "Dien thoai Iphone 11",
+        Price = 234.456M
+    };
+    var product3 = new Product() {
+        Name = "Iphone 12",
+        Description = "Dien thoai Iphone 12",
+        Price = 345.456M
+    };
+    <p>@product1.Name</p>
+}
+
+@{
+    ViewData["MyData"] = "dot net core 2022.";
+}
+<h3>MyData is @ViewData["MyData"]</h3>
 @{
     var a = 2;
     var b = 3;
     <p>a = @a, b = @b</p>
 }
+    
+
 
 <p>Tong cua a va b la @(a + b)</p>
-
+@{
+}
 <p>Name: @this.Request.RouteValues["name"]</p>
 
-<a asp-page="SecondPage">Index 2</a>
+
+<a asp-page="SecondPage.cshtml">Index 23</a>
+
+@functions{
+    string title {get; set;} = "trang razor page";
+    
+    string Wellcome(string name) => $"Hello {name}";
+
+    public void OnGet(){
+        //Console.WriteLine("123");
+    }
+}
+
+
+<div class="row bg-info">
+    <div class="col">
+        @await Html.PartialAsync("_ProductItem", @product1);
+    </div>
+    <div class="col">
+        <partial name = "_ProductItem" model = "product2" ></partial>
+    </div>
+    <div class="col">
+        @{
+            await Html.RenderPartialAsync("_ProductItem", @product3);
+        }
+    </div>
+</div>
+
+@{
+    var products = new List<Product>(){
+        new Product() {
+            Name = "Iphone X",
+            Description = "Dien thoai Iphone X",
+            Price = 123.456M
+        },
+        new Product() {
+            Name = "Iphone 11",
+            Description = "Dien thoai Iphone 11",
+            Price = 234.456M
+        },
+        new Product() {
+            Name = "Iphone 12",
+            Description = "Dien thoai Iphone 12",
+            Price = 345.456M
+        },
+    };
+    foreach(var product in products)
+    {
+        @await Html.PartialAsync("_ProductItem", product);
+    }
+}
+
+

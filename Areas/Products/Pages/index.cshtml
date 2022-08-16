@@ -1,0 +1,20 @@
+@page
+<h1>Trang san pham</h1>
+
+@{
+    List<String> products = new List<string> {
+        "Iphone",
+        "Laptop",
+        "CPU",
+    };
+
+    <h2>Danh sách shản phẩm</h2>
+    <ul>
+        @foreach (var product in products)
+        {
+            //<li>Sản phẩm @product</li>
+            //<text> @product </text>
+            @:Sản phẩm @product
+        }
+    </ul>
+}
