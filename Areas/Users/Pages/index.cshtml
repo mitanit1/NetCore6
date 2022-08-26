@@ -1,2 +1,14 @@
-@page
+@page "/user/{id?}"
+@using NetCore6.Models;
+@model User;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
 <h1>Trang nguoi dung</h1>
+
+@Html.Label("UserName")
+@Html.TextBox("UserName", null, new {@class = "text-primary"})
+
+<label asp-for="UserName"></label>
+<input asp-for="UserName" class="text-secondary" />
+<a asp-page="index" asp-route-id="2" >Sản phẩm 2</a>
