@@ -1,6 +1,10 @@
 @page
 <h1>Trang san pham</h1>
 
+
+@Html.Label("UserName")
+@Html.TextBox("UserName", null, new {@class = "text-primary"})
+
 @{
     List<String> products = new List<string> {
         "Iphone",
