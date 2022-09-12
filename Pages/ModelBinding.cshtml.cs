@@ -7,6 +7,7 @@ using static System.Console;
 
 namespace NetCore6;
 
+[BindProperties]
 public class ModelBindingModel : PageModel {
     // Binding Email từ dữ liệu từ nguồn tới có tên Email, email, emaIL ...
     [BindProperty]
@@ -16,7 +17,7 @@ public class ModelBindingModel : PageModel {
     [BindProperty (Name = "username")]
     public string UserId { set; get; }
 
-    // Binding ProductID - thiết lập BINDING ngay cả khi truy cập là HTTP GÉT
+    // Binding ProductID - thiết lập BINDING ngay cả khi truy cập là HTTP GET
     [BindProperty(SupportsGet=true)]
     public int ProductID { set; get; }
 
