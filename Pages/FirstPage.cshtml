@@ -29,6 +29,8 @@
 
 @{
     ViewData["MyData"] = "dot net core 2022.";
+    ViewData["message"] = "Noi dung moi";
+    ViewData["content"] = "Chi tiet noi dung.";
 }
 <h3>MyData is @ViewData["MyData"]</h3>
 @{
@@ -72,6 +74,8 @@
     </div>
 </div>
 
+@await Html.PartialAsync("_Message");
+
 @{
     var products = new List<Product>(){
         new Product() {
@@ -97,3 +101,4 @@
 }
 
 
+@await Component.InvokeAsync("ProductBox")

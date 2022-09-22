@@ -1,0 +1,36 @@
+@page "/sanpham/{id:int?}"
+@using NetCore6.Models;
+
+@functions {
+  Product product;
+  void OnGet() {
+    int? ID = null;
+    if (Request.RouteValues["id"] != null) {
+      ID = Int32.Parse(Request.RouteValues["id"].ToString());
+      product = ProductContext.FindProductByID(ID.Value);
+    }
+  }
+}
+@{
+  this.OnGet();
+}
+
+@if (product != null) {
+    <h2>@product.Name</h2>
+    <p>Mô tả: @product.Description</p>
+    <p>Giá: @product.Price</p>
+    <p>
+      <a asp-page="ViewProduct" asp-route-id="">Sản phẩm khác</a>
+    </p>
+}
+else {
+  <h2>Các sản phẩm</h2>
+  <ul>
+    @foreach (var p in ProductContext.products)
+    {
+        <li>
+          <a asp-page="ViewProduct" asp-route-id="@p.ID">@p.Name</a>
+        </li>
+    }
+  </ul>
+}

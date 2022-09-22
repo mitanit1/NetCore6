@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+   <head></head>
+   <body>
+      <header>
+        <h1> Phần tiêu đề quan trọng </h1>
+        <h3> Tiêu đề ít quan trọng</h3>
+      </header>
+
+      <nav>
+        <ul>
+           <li><a href="#">Trang chủ</a></li>
+           <li><a href="#">Dịch vụ</a></li>
+           <li><a href="#">Giới thiệu</a></li>
+        </ul>
+     </nav>
+
+     <article>
+        <h1> Quà tặng cho mọi người </h1>
+        <p> Trang web giúp bạn chọn và mua quà tặng </p>
+        <aside>
+           <p> Quà tặng được chuyển đến khách hàng trong khoảng 24h </p>
+        </aside>
+     </article>
+
+     <article>
+        <h1>Chào mừng</h1>
+        <section>
+           <h1>Tiêu đề</h1>
+           <p>Nội dung, hình ảnh ...</p>
+        </section>
+     </article>
+
+     <audio controls>
+        <source src="aloalo.mp3" type="audio/mpeg">
+        <source src="audio.ogg" type="audio/ogg">
+        Trình duyệt không hỗ trợ phát âm thanh
+     </audio>
+
+     <video controls>
+        <source src="https://www.youtube.com/watch?v=gvAF9mboxFM" type="video/mp4">
+        <source src="video.ogg" type="video/ogg">
+        Trình duyệt của bạn không hỗ trợ video
+     </video>
+
+     Thực hiện: <progress min="0" max="100" value="35">
+    </progress>
+
+
+<div id="toado"></div>
+<script>
+
+    function errorgeo(err) {
+        var errcode = err.code;
+        var message = err.message;
+        var boxhtml = document.getElementById("toado");
+        boxhtml.innerHTML = "Mã lỗi: " + errcode + "<br>" + "Nội dung lỗi: " + message;
+
+    }
+
+    function showcoor(pos) {
+        var coord = pos.coords;
+        var long = coord.longitude;
+        var lat  = coord.latitude;
+        var boxhtml = document.getElementById("toado");
+        var urlmap = "https://maps.googleapis.com/maps/api/staticmap?center="+lat+","+long+"&zoom=12&size=400x400&markers=color:red%7Clabel:C%7C"+lat+","+long;
+        boxhtml.innerHTML = urlmap+'<img src="'+urlmap+'"/>';
+
+    }
+
+    //TEST
+
+</script>
+
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+
+<div id="box"
+     ondrop="drop(event)"
+     ondragover="allowDrop(event)"
+     style="border:1px solid black; width:200px; height:200px">
+</div>
+
+<hr/>
+
+<div draggable="true" ondragstart="drag(event)" id="divdrag">
+    <img  src="https://www.google.com.vn/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" draggable="false"/>
+    <p>Logo Google</p>
+</div>
+
+
+<svg width="200" height="250" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+    <rect x="10" y="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5"/>
+    <rect x="60" y="10" rx="10" ry="10" width="30" height="30" stroke="black" fill="transparent" stroke-width="5"/>
+  
+    <circle cx="25" cy="75" r="20" stroke="red" fill="transparent" stroke-width="5"/>
+    <ellipse cx="75" cy="75" rx="20" ry="5" stroke="red" fill="transparent" stroke-width="5"/>
+  
+    <line x1="10" x2="50" y1="110" y2="150" stroke="orange" stroke-width="5"/>
+    <polyline points="60 110 65 120 70 115 75 130 80 125 85 140 90 135 95 150 100 145"
+        stroke="orange" fill="transparent" stroke-width="5"/>
+  
+    <polygon points="50 160 55 180 70 180 60 190 65 205 50 195 35 205 40 190 30 180 45 180"
+        stroke="green" fill="transparent" stroke-width="5"/>
+  
+    <path d="M20,230 Q40,205 50,230 T90,230" fill="none" stroke="blue" stroke-width="5"/>
+  </svg>
+
+
+  <form autocomplete="on">
+    <label for="e-mail">Email: </label>
+    <input name="Email" type="email" required placeholder="email@example.com"  />
+    <input type="submit" value="Submit"/>
+
+    <input id="car" type="text" list="colors" />
+<datalist id="colors">
+    <option value="Red">
+    <option value="Green">
+    <option value="Yellow">
+</datalist>
+</form>
+   </body>
+</html>
