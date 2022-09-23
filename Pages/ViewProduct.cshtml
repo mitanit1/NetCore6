@@ -1,4 +1,5 @@
 @page "/sanpham/{id:int?}"
+<<<<<<< HEAD
 @using NetCore6
 @using NetCore6.Models
 @model ViewProductModel
@@ -7,6 +8,28 @@
     <h2>@Model.product.Name</h2>
     <p>Mô tả: @Model.product.Description</p>
     <p>Giá: @Model.product.Price</p>
+=======
+@using NetCore6.Models;
+
+@functions {
+  Product product;
+  void OnGet() {
+    int? ID = null;
+    if (Request.RouteValues["id"] != null) {
+      ID = Int32.Parse(Request.RouteValues["id"].ToString());
+      product = ProductContext.FindProductByID(ID.Value);
+    }
+  }
+}
+@{
+  this.OnGet();
+}
+
+@if (product != null) {
+    <h2>@product.Name</h2>
+    <p>Mô tả: @product.Description</p>
+    <p>Giá: @product.Price</p>
+>>>>>>> 2eb8222e800ac3c5acb0fe2438b3458f3bcbc8e7
     <p>
       <a asp-page="ViewProduct" asp-route-id="">Sản phẩm khác</a>
     </p>
@@ -21,6 +44,7 @@ else {
         </li>
     }
   </ul>
+<<<<<<< HEAD
 }
 mydata = @ViewData["mydata"]
 <div class="d-flex">
@@ -42,3 +66,6 @@ mydata = @ViewData["mydata"]
     <button class="btn btn-danger m-1" asp-page-handler="soanthao">Soạn thảo</button>
     <button class="btn btn-danger m-1" asp-page-handler="xemchitiet">Xem chi tiết</button>
 </form>
+=======
+}
+>>>>>>> 2eb8222e800ac3c5acb0fe2438b3458f3bcbc8e7

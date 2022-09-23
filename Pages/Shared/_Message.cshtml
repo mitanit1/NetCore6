@@ -1,0 +1,8 @@
+@{
+    var message = ViewData["message"] ?? "Thong bao";
+    var content = ViewData["content"] ?? "Noi dung thong bao";
+}
+<div class="alert alert-danger">
+    <strong>@message</strong><br>
+    @content
+</div>

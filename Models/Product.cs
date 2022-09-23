@@ -2,6 +2,7 @@ namespace NetCore6.Models;
 using System.Linq;
 
 public class Product{
+<<<<<<< HEAD
     public int ID {set; get;}
     public string Name {get; set;}
     public string Description {get; set;}
@@ -9,6 +10,16 @@ public class Product{
     public DateTime CreateDate {get; set;}
 }
 public static class ProductContext {
+=======
+    public int ID { set; get; }
+    public String Name { set; get; }
+    public String Description { set; get; }
+    public Decimal Price { set; get; } = 0;
+}
+
+
+ public static class ProductContext {
+>>>>>>> 2eb8222e800ac3c5acb0fe2438b3458f3bcbc8e7
     public static List<Product> products;
     static ProductContext() {
       // Khởi tạo một danh sách các sản phẩm mẫu
@@ -42,5 +53,9 @@ public static class ProductContext {
       return p.FirstOrDefault();
     }
 
+<<<<<<< HEAD
 }
 
+=======
+  }
+>>>>>>> 2eb8222e800ac3c5acb0fe2438b3458f3bcbc8e7
